@@ -104,6 +104,20 @@ function checkAll(){
       document.getElementById('myShowDiv3').innerHTML = 'You hit object move2'
   }
 
+
+  if (myHitOther('bullet1','move2')) {
+      document.getElementById('myShowDiv3').innerHTML = 'The bullet hit move 2'
+      document.getElementById('bullet1').style.visibility  = 'hidden'
+      clearInterval(document.myShot)
+
+  }
+
+
+
+
+
+
+
 // just shows where your two objects are to help with debugging
 
    document.getElementById('myShowDiv1').innerHTML = left1  +', '+ right1  +', '+   top1   +', '+  bottom1
@@ -142,14 +156,14 @@ function myGunPrep(){
     document.getElementById('bullet1').style.left  = document.getElementById('move1').style.left
     document.getElementById('bullet1').style.top   = document.getElementById('move1').style.top
 
-    document.myShot = setInterval('myGun()', 30)
+    document.myShot = setInterval('myGun()', 30) // calls the function every 30 mille seconds
 
 }
 
 
 function myGun(){
 
-    document.getElementById('bullet1').style.left  = parseInt(document.getElementById('bullet1').style.left)+5+'px'
+    document.getElementById('bullet1').style.left  = parseInt(document.getElementById('bullet1').style.left) + 20 + 'px'
 
 }
 
@@ -191,11 +205,12 @@ myBgObject = eval('document.body');
 
 <!-- ********************  Some instructions that magically disappear **************************  -->
 
-<div id="myInstructions" onclick="document.getElementById('myInstructions').style.visibility = 'hidden'" style="visibility:visible; width:500px; background-color:yellow"">
+<div id="myInstructions" onclick="document.getElementById('myInstructions').style.visibility = 'hidden'" style="visibility:visible; width:500px; background-color:yellow">
 <ol>Instructions here:
-<li>
-<li>
-<li>
+<li> Make you own game
+<li> For this demonstration. click the buttons and the red box
+<li> Delete the buttons you do not want in your game.
+<li> Look at the code for each button to see how to make buttons for other directions
 </ol>
 Click to hide.
 </div><br>
@@ -210,9 +225,9 @@ Click to hide.
 
 
 
-<img  id="move1"  src="myMove1Pic.png" width=40 style="position:absolute; width:30px; height:30px; left:30px; top:250px" ontouchstart="myGunPrep()">  
+<img  id="move1"  src="myMove1Pic.png"  style="position:absolute; width:30px; height:30px; left:30px; top:250px" onClick="myGunPrep()">  
  
-<img  id="move2" src="myMove2Pic.png" style="position:absolute; width:30px; height:30px;  left:500px; top:240px;"/>
+<img  id="move2"  src="myMove2Pic.png" style="position:absolute; width:30px; height:30px;  left:500px; top:240px;"/>
 
 
 
