@@ -1,16 +1,17 @@
-<BODY BACKGROUND="sillyBack.png" ONLOAD="myTimer = setInterval('myScroll()', 100)">
+<html>
+<head>
+<title>Game base for Android and Apple</title>
+<script>        
+myPosY = 0;     // present vertical position
+myPosX = 0;    // present horizonal position
+myBgHeight =758;    // height of background image
+myBgWidth =1096;  // width of background image
+mySpeedYdown =0;    // speed moving down 
+mySpeedXright=0;    // speed moving right
+myBackground = eval('document.body');
 
-<SCRIPT>        // must be in the body for some reason
-yPosition = 0;     // present vertical position
-xPosition = 0;    // present horizonal position
-imageHeight =758;    // height of background image
-imageWidth =1096;  // width of background image
-yChange =0;    // speed moving down 
-xChange=0;    // speed moving right
-myBgObject = eval('document.body');
 
-
-
+// myScroll function controls the moving the background image
 
 function myScroll() {
 
@@ -18,35 +19,18 @@ function myScroll() {
    checkAll()
 
 
-   yPosition +=  yChange;
-   if (yPosition > imageHeight) {yPosition = 0}
-   if (yPosition <0) {yPosition = imageHeight}
+   myPosY +=  mySpeedYdown;
+   if (myPosY > myBgHeight) {myPosY = 0}
+   if (myPosY <0) {myPosY = myBgHeight}
 
-   xPosition +=  xChange;
-   if (xPosition > imageWidth) {xPosition = 0}
-   if (xPosition <0) {xPosition = imageWidth}
+   myPosX +=  mySpeedXright;
+   if (myPosX > myBgWidth) {myPosX = 0}
+   if (myPosX <0) {myPosX = myBgWidth}
 
 
-   myBgObject.style.backgroundPosition = xPosition+" " + yPosition;
+   myBackground.style.backgroundPosition = myPosX+" " + myPosY;
 }
-</SCRIPT>
-
-
-
-
-
-
-
-<!-- ********************  Background stuff finished **************************
-
-
-Original code by: Roy Sinclair roysinclair@email.msn.com
-Thanks to Sean Secker for finding it
-Latest update by J. Ellis  -->
-
-
-
-
+</script>
 
 
 
@@ -62,6 +46,8 @@ Latest update by J. Ellis  -->
 
  
 <script> 
+
+// myHitXY function determines if any object has hit an x, y location. Note better to use myHitOther
  
 function myHitXY(my1,X,Y){
 
@@ -86,7 +72,8 @@ function myHitXY(my1,X,Y){
 
 
 
- 
+// myHitOther function determines if two obejcts have hit each other. 
+
 function myHitOther(my1,my2){
 
 
@@ -116,13 +103,11 @@ function myHitOther(my1,my2){
 
 
 
-
+// Group all your detection code here
  
 function checkAll(){
  
   if (myHitXY('move1',200,280)) {
-     // alert('using function myHitXY(), you hit location 200x,230y width 40x and height 30y') 
-     // document.getElementById('move1').style.left  = parseInt(document.getElementById('move1').style.left)+100+'px'
     document.getElementById('myShowDiv3').innerHTML = 'hit spot'
  } else {document.getElementById('myShowDiv3').innerHTML = ''}
  
@@ -139,7 +124,7 @@ function checkAll(){
  
 
  
-</script>
+
 
 
 
@@ -160,7 +145,7 @@ function checkAll(){
 
 
 
-<script>
+
 
 document.mySpeedX = 0;
 document.mySpeedY = 0;
@@ -183,30 +168,18 @@ function myAuto(){
 
 
 
-<!-- ********************  Auto Move Finished  finished **************************  -->
+
+<!-- ********************  Here the webpage begins **************************  -->
 
 
-
-
-
-
-<body onkeypress="{
-	if(event.keyCode==97){document.mySpeedX += -4}   // small a key
+</head>
+<body background="sillyBack.png" onload="myTimer = setInterval('myScroll()', 100)"    onkeypress="{
+	if(event.keyCode==97){document.mySpeedX += -4}   // small a key, not for mobile apps
 	if(event.keyCode==119){document.mySpeedY += 6}   // small w key
-	if(event.keyCode==100){alert(window.innerWidth-document.all.myPic1.width)}   // small d key
+	if(event.keyCode==100){alert(you typed the letter d)}   // small d key
 }">
 
 
-
-
-
-
-
-
-
-
-
-<!-- ********************  Web page Starts **************************  -->
 
 
 
@@ -224,38 +197,7 @@ function myAuto(){
 Click to hide.
 </div><br>
  
-<div id="move1"  style="position:absolute; width:30px; height:30px; left:30px; top:250px" ><img src="myPic1.png" width=40>
-
-<svg  width="600" height="500">
-  
-  <line x1="0" y1="0" x2="200" y2="20" style="stroke:rgb(255,55,0);stroke-width:2" />
-  
-  <rect width="80" height="60"  x="200" y="200" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)">
-      <animate attributeType="CSS" attributeName="opacity" from="1" to="0" dur="5s" repeatCount="indefinite" />
-  </rect>    
-  
-  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
-  
-  <path d="M550 400 L75 200 L225 200 Z"  fill="green" />
-  
-  <polyline points="0,0 0,20 20,20 20,40 40,40 40,60" fill="red" />
-
-  <text x="300" y="200" style="fill:red;"  >Simple Text</text>
- 
-  <a xlink:href="http://www.w3schools.com/svg/" target="_blank">
-      <text x="400" y="20" style="fill:blue;"  transform="rotate(30 20,40)" >Several lines:
-         <tspan x="400" y="45">First line.</tspan>
-         <tspan x="400" y="70"  >Second line.</tspan>
-      </text>
-  </a>
-  
-
-  
-</svg>
-
-
-
-</div>
+<div id="move1"  style="position:absolute; width:30px; height:30px; left:30px; top:250px" ><img src="myPic1.png" width=40>   </div>
  
 <img  id="move2" src="sillyBack.png" style="position:absolute; width:30px; height:30px;  left:500px; top:240px;"/>
 
@@ -270,23 +212,32 @@ Click to hide.
 
 
 
-<input type=button value="BG Faster Down" onClick="yChange += 1">
+<input type=button value="BG Faster Down" onClick="mySpeedYdown += 1">
 
-<input type=button value="Bg Faster Right" onClick="xChange += 1">
+<input type=button value="Bg Faster Right" onClick="mySpeedXright += 1">
+
+
+
+
+
 
 
 
 <input type=button value="Step Right" onclick="{
     document.getElementById('move1').style.left  = parseInt(document.getElementById('move1').style.left)+5+'px'
     checkAll()
-}"
->
+}">
+
+
 
 <input type=button value="touch event Right" ontouchstart="{
     document.getElementById('move1').style.left  = parseInt(document.getElementById('move1').style.left)+5+'px'
     checkAll()
-}"
->
+}">
+
+
+
+
 
 
 
@@ -305,16 +256,18 @@ Click to hide.
 }"> 
 
 
-<div id="myShowDiv1">out</div><br>
-<div id="myShowDiv2">out</div><br>
-<div id="myShowDiv3">out</div><br>
+
+
+
+The following is just for game information while you are developing your game
+<div id="myShowDiv1">out 1</div><br>
+<div id="myShowDiv2">out 2</div><br>
+<div id="myShowDiv3">out 3</div><br>
 
 
 
 
 
+</body>
+</html>
 
-
-
-
-<br><input type=button value="index.html" style="font-size:30px" onclick="location='index.html'"><br>
