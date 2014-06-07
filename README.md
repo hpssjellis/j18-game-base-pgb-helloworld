@@ -6,7 +6,9 @@ Phonegap Build simple template for a web based or mobile App computer game
 
 
 
-These is really handy as a starting point for anyone wanting to try to make video games. Especially on the iPad or iPhone since when combined with phonegap serve feature you can view and test your app without paying the Apple $100 developer fee!
+This is really handy as a starting point for anyone wanting to try to make webpage based games using HTML5 and javascript. The game has been optimized to work with phonegap for making mobile apps that work on iPods, iPads, iPhones, Android and Win 8.
+
+Especially on the iPad or iPhone since when combined with phonegap serve feature you can view and test your app without paying the Apple $100 developer fee!
 
 
 
