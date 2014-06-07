@@ -108,7 +108,7 @@ function checkAll(){
   if (myHitOther('bullet1','move2')) {
       document.getElementById('myShowDiv3').innerHTML = 'The bullet hit move 2'
       document.getElementById('bullet1').style.visibility  = 'hidden'
-         document.getElementById('bullet1').style.left  = '-200px''
+      document.getElementById('bullet1').style.left  = '-200px''
       clearInterval(document.myShot)
 
   }
@@ -156,8 +156,9 @@ function myGunPrep(){
     document.getElementById('bullet1').style.visibility  = 'visible'
     document.getElementById('bullet1').style.left  = document.getElementById('move1').style.left
     document.getElementById('bullet1').style.top   = document.getElementById('move1').style.top
-
-    document.myShot = setInterval('myGun()', 30) // calls the function every 30 mille seconds
+    
+   clearInterval(document.myShot)
+   document.myShot = setInterval('myGun()', 30) // calls the function every 30 mille seconds
 
 }
 
